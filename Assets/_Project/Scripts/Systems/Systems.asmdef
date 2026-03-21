@@ -1,9 +1,7 @@
 {
-    "name": "Gameplay",
+    "name": "Systems",
     "rootNamespace": "PixelDestruction",
-    "references": [
-        "GUID:739938cb7cb908c469b158b91274862b"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

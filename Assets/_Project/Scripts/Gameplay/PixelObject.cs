@@ -168,6 +168,23 @@ namespace PixelDestruction.Gameplay
             newPixelObj.Initialize(newGrid, width, height);
         }
 
+        public int GetRemainingPixelCount()
+        {
+            if (grid == null) return 0;
+            int count = 0;
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    if (grid[x, y] != null && !grid[x, y].IsDestroyed)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
         public void UpdateCenterOfMass()
         {
             if (grid == null) return;
