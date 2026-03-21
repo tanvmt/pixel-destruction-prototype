@@ -37,9 +37,24 @@ namespace PixelDestruction.Gameplay
                 if (node != null && !node.IsDestroyed)
                 {
                     node.IsDestroyed = true;
-                    node.gameObject.SetActive(false); 
                     grid[node.GridX, node.GridY] = null;
                     anyDestroyed = true;
+
+                    node.transform.SetParent(null);
+                    
+                    Rigidbody2D nodeRb = node.gameObject.GetComponent<Rigidbody2D>();
+                    if (nodeRb == null)
+                    {
+                        nodeRb = node.gameObject.AddComponent<Rigidbody2D>();
+                    }
+                    
+                    BoxCollider2D nodeCol = node.gameObject.GetComponent<BoxCollider2D>();
+                    if (nodeCol != null)
+                    {
+                        nodeCol.size *= 0.8f;
+                    }
+
+                    nodeRb.velocity = rb.velocity;
                 }
             }
 
