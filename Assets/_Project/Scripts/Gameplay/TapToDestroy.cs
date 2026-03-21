@@ -5,7 +5,10 @@ namespace PixelDestruction.Gameplay
 {
     public class TapToDestroy : MonoBehaviour
     {
+        [Header("Tap Config")]
         [SerializeField] private float damageRadius = 0.5f;
+        [SerializeField] private float maxDamage = 100f;
+        [SerializeField] private float minDamage = 10f;
 
         private void Update()
         {
@@ -26,13 +29,22 @@ namespace PixelDestruction.Gameplay
                     PixelNode node = col.GetComponent<PixelNode>();
                     if (node != null && !node.IsDestroyed)
                     {
-                        PixelObject parentObj = node.GetComponentInParent<PixelObject>();
-                        if (parentObj != null)
+                        float distance = Vector2.Distance(clickPos, node.transform.position);
+                        float damageFalloff = Mathf.Clamp01(1f - (distance / damageRadius));
+                        float appliedDamage = Mathf.Lerp(minDamage, maxDamage, damageFalloff);
+                        
+                        node.Health -= appliedDamage;
+
+                        if (node.Health <= 0)
                         {
-                            if (!objectsHit.ContainsKey(parentObj))
-                                objectsHit[parentObj] = new List<PixelNode>();
-                                
-                            objectsHit[parentObj].Add(node);
+                            PixelObject parentObj = node.GetComponentInParent<PixelObject>();
+                            if (parentObj != null)
+                            {
+                                if (!objectsHit.ContainsKey(parentObj))
+                                    objectsHit[parentObj] = new List<PixelNode>();
+                                    
+                                objectsHit[parentObj].Add(node);
+                            }
                         }
                     }
                 }

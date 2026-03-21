@@ -51,7 +51,7 @@ namespace PixelDestruction.Gameplay
                     BoxCollider2D nodeCol = node.gameObject.GetComponent<BoxCollider2D>();
                     if (nodeCol != null)
                     {
-                        nodeCol.size *= 0.8f;
+                        nodeCol.size *= 0.7f;
                     }
 
                     nodeRb.velocity = rb.velocity;
