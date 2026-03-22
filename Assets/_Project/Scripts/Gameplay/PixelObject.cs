@@ -54,6 +54,7 @@ namespace PixelDestruction.Gameplay
                         nodeCol.size *= 0.7f;
                     }
 
+                    nodeRb.mass = 0.05f;
                     nodeRb.velocity = rb.velocity;
                 }
             }
