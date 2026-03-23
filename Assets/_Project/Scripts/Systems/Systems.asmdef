@@ -1,7 +1,9 @@
 {
     "name": "Systems",
     "rootNamespace": "PixelDestruction",
-    "references": [],
+    "references": [
+        "GUID:a8fef7693b9dc6b4d8d3350e8965367e"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

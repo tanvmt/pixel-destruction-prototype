@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using PixelDestruction.Core;
 
 namespace PixelDestruction.Gameplay
 {
-    public class CircularSaw : MonoBehaviour
+    public class CircularSaw : MonoBehaviour, IWeapon
     {
         [Header("Damage Settings")]
         [SerializeField] private float damagePerSecond = 100f;
@@ -21,6 +22,22 @@ namespace PixelDestruction.Gameplay
         {
             baseRotationSpeed = rotationSpeed;
             baseDamagePerSecond = damagePerSecond;
+        }
+
+        private void Start()
+        {
+            if (Systems.UpgradeManager.Instance != null)
+            {
+                Systems.UpgradeManager.Instance.RegisterWeapon(this);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (Systems.UpgradeManager.Instance != null)
+            {
+                Systems.UpgradeManager.Instance.UnregisterWeapon(this);
+            }
         }
 
         private void Update()
@@ -89,6 +106,24 @@ namespace PixelDestruction.Gameplay
             
             Transform targetToScale = transform;
             targetToScale.localScale *= multiplier;
+        }
+
+        public WeaponType GetWeaponType() => WeaponType.CircularSaw;
+
+        public void ApplyUpgrade(UpgradeType type, float value)
+        {
+            switch (type)
+            {
+                case UpgradeType.FlatDamage:
+                    UpgradeDamage(value);
+                    break;
+                case UpgradeType.MultiplySpeed:
+                    UpgradeSpeed(value);
+                    break;
+                case UpgradeType.MultiplySize:
+                    UpgradeSize(value);
+                    break;
+            }
         }
     }
 
