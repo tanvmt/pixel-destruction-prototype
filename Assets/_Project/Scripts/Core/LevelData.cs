@@ -24,6 +24,8 @@ namespace PixelDestruction.Core
 
         [Header("Layout Data")]
         public List<PositionData> obstacles;
-        public List<PositionData> weaponSlots;
+
+        [Header("Weapon Placement")]
+        public GameObject allowedWeaponPrefab;
     }
 }

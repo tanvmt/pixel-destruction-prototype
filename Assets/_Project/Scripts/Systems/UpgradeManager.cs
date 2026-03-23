@@ -13,9 +13,6 @@ namespace PixelDestruction.Systems
 
         public int ExtraWeaponCapacity { get; private set; } = 0;
 
-        [Header("Global Settings")]
-        [SerializeField] public int baseWeaponCapacity = 1;
-
         [Header("Upgrade Pool")]
         [SerializeField] private List<UpgradeData> upgradePool = new List<UpgradeData>();
 
@@ -30,12 +27,11 @@ namespace PixelDestruction.Systems
             if (newUpgrade == null) return;
             
             appliedUpgrades.Add(newUpgrade);
-            Debug.Log($"[UpgradeManager] Đã nhận Nâng cấp: {newUpgrade.upgradeName}");
 
             if (newUpgrade.upgradeType == UpgradeType.ExtraWeaponCapacity)
             {
                 ExtraWeaponCapacity += Mathf.RoundToInt(newUpgrade.value);
-                Debug.Log($"[UpgradeManager] Số lần được xây vũ khí tăng lên. Giới hạn cộng thêm: {ExtraWeaponCapacity}");
+                Debug.Log($"[UpgradeManager] Extra weapon capacity increased. Total extra capacity: {ExtraWeaponCapacity}");
                 return;
             }
 
@@ -51,15 +47,25 @@ namespace PixelDestruction.Systems
         public List<UpgradeData> GetRandomUpgrades(int count)
         {
             if (upgradePool.Count == 0) return new List<UpgradeData>();
+
+            if (activeWeapons.Count == 0)
+            {
+                UpgradeData forceCard = upgradePool.Find(upg => upg.upgradeType == UpgradeType.ExtraWeaponCapacity);
+                if (forceCard != null)
+                {
+                    Debug.Log("[UpgradeManager] No active weapons on map! Forcing the appearance of an Extra Weapon Capacity card.");
+                    return new List<UpgradeData> { forceCard };
+                }
+            }
             
             List<UpgradeData> copy = new List<UpgradeData>(upgradePool);
 
             int totalSlotsOnMap = FindObjectsOfType<WeaponSlot>().Length;
 
-            if (baseWeaponCapacity + ExtraWeaponCapacity >= totalSlotsOnMap)
+            if (ExtraWeaponCapacity >= totalSlotsOnMap)
             {
                 copy.RemoveAll(upg => upg.upgradeType == UpgradeType.ExtraWeaponCapacity);
-                Debug.Log("[UpgradeManager] Đã đạt giới hạn Weapon Slot trên bản đồ. Ẩn thẻ tăng số lượng vũ khí!");
+                Debug.Log("[UpgradeManager] Max physical weapon slots reached. Removed Extra Weapon Capacity card from pool!");
             }
 
             for (int i = 0; i < copy.Count; i++)
@@ -104,7 +110,7 @@ namespace PixelDestruction.Systems
             appliedUpgrades.Clear();
             activeWeapons.Clear();
             ExtraWeaponCapacity = 0;
-            Debug.Log("[UpgradeManager] Đã Reset toàn bộ Nâng Cấp cho màn chơi mới.");
+            Debug.Log("[UpgradeManager] Successfully reset all upgrades and capacity for the new level.");
         }
     }
 }

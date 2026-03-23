@@ -12,6 +12,8 @@ namespace PixelDestruction.Core
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Transform environmentContainer;
 
+        public LevelData CurrentLevelData { get; private set; }
+
         private int currentLevelIndex = 0;
         private int objectsProcessedCounter = 0;
         private int targetObjectsCount = 0;
@@ -25,6 +27,7 @@ namespace PixelDestruction.Core
         private void Start()
         {
             GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
+            LoadLevel(0);
         }
 
         private void OnDestroy()
@@ -47,23 +50,20 @@ namespace PixelDestruction.Core
 
             ClearCurrentLevel();
 
-            LevelData levelData = levels[index];
-            targetObjectsCount = levelData.requiredObjectsToDestroy;
+            CurrentLevelData = levels[index];
+            targetObjectsCount = CurrentLevelData.requiredObjectsToDestroy;
             objectsProcessedCounter = 0;
 
-            foreach (var obs in levelData.obstacles)
+            foreach (var obs in CurrentLevelData.obstacles)
             {
                 if (obs.prefab != null)
-                    Instantiate(obs.prefab, obs.position, Quaternion.identity, environmentContainer);
+                {
+                    GameObject spawned = Instantiate(obs.prefab, environmentContainer);
+                    spawned.transform.localPosition = new Vector3(obs.position.x, obs.position.y, 0f);
+                }
             }
 
-            foreach (var slot in levelData.weaponSlots)
-            {
-                if (slot.prefab != null)
-                    Instantiate(slot.prefab, slot.position, Quaternion.identity, environmentContainer);
-            }
-
-            StartCoroutine(SpawnObjectsRoutine(levelData));
+            StartCoroutine(SpawnObjectsRoutine(CurrentLevelData));
         }
 
         private IEnumerator SpawnObjectsRoutine(LevelData data)
