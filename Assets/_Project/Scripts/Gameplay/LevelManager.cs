@@ -17,7 +17,11 @@ namespace PixelDestruction.Gameplay
 
         private int currentLevelIndex = 0;
         private int objectsProcessedCounter = 0;
+        private int objectsSpawnedCounter = 0;
         private int targetObjectsCount = 0;
+
+        private int currentSpawnId = 0;
+        private Dictionary<int, int> activeSpawnsTracker = new Dictionary<int, int>();
 
         private void Awake()
         {
@@ -54,6 +58,12 @@ namespace PixelDestruction.Gameplay
             CurrentLevelData = levels[index];
             targetObjectsCount = CurrentLevelData.requiredObjectsToDestroy;
             objectsProcessedCounter = 0;
+            objectsSpawnedCounter = 0;
+            
+            currentSpawnId = 0;
+            activeSpawnsTracker.Clear();
+
+            OnLevelLoaded?.Invoke(0, targetObjectsCount);
 
             foreach (var obs in CurrentLevelData.obstacles)
             {
@@ -71,9 +81,18 @@ namespace PixelDestruction.Gameplay
         {
             foreach (var texture in data.texturesToSpawn)
             {
+                if (data.maxConcurrentObjects > 0)
+                {
+                    while (objectsSpawnedCounter - objectsProcessedCounter >= data.maxConcurrentObjects)
+                    {
+                        yield return null;
+                    }
+                }
+
                 if (texture != null && spawnPoint != null && PixelSpawner.Instance != null)
                 {
                     PixelSpawner.Instance.SpawnObjectFromTexture(texture, spawnPoint.position);
+                    objectsSpawnedCounter++;
                 }
                 yield return new WaitForSeconds(data.spawnDelay);
             }
@@ -94,6 +113,35 @@ namespace PixelDestruction.Gameplay
         {
             objectsProcessedCounter++;
             CheckWinCondition();
+        }
+
+        public int GetNewSpawnId()
+        {
+            currentSpawnId++;
+            activeSpawnsTracker[currentSpawnId] = 1;
+            return currentSpawnId;
+        }
+
+        public void RegisterFragment(int spawnId)
+        {
+            if (activeSpawnsTracker.ContainsKey(spawnId))
+            {
+                activeSpawnsTracker[spawnId]++;
+            }
+        }
+
+        public void UnregisterFragment(int spawnId)
+        {
+            if (activeSpawnsTracker.ContainsKey(spawnId))
+            {
+                activeSpawnsTracker[spawnId]--;
+
+                if (activeSpawnsTracker[spawnId] <= 0)
+                {
+                    activeSpawnsTracker.Remove(spawnId);
+                    RegisterObjectProcessed();
+                }
+            }
         }
 
         private void CheckWinCondition()

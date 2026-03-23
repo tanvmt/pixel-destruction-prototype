@@ -7,6 +7,8 @@ namespace PixelDestruction.Core
     public class LevelData : ScriptableObject
     {
         [Header("Spawn Settings")]
+        [Tooltip("Maximum number of objects allowed to exist on screen at the same time. Helps prevent game lag. (0 = No limit)")]
+        public int maxConcurrentObjects = 3;
         [Tooltip("List of objects to drop from the top.")]
         public List<Texture2D> texturesToSpawn;
         public float spawnDelay = 2f;

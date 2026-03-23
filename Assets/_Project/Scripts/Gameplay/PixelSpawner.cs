@@ -25,6 +25,11 @@ namespace PixelDestruction.Gameplay
         {
             GameObject obj = Instantiate(pixelObjectPrefab, spawnPosition, Quaternion.identity);
             PixelObject pixelObj = obj.GetComponent<PixelObject>();
+            
+            if (Gameplay.LevelManager.Instance != null)
+            {
+                pixelObj.spawnId = Gameplay.LevelManager.Instance.GetNewSpawnId();
+            }
 
             int finalWidth = sourceTexture != null ? sourceTexture.width : width;
             int finalHeight = sourceTexture != null ? sourceTexture.height : height;
