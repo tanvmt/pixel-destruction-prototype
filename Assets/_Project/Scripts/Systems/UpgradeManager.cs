@@ -48,7 +48,7 @@ namespace PixelDestruction.Systems
         {
             if (upgradePool.Count == 0) return new List<UpgradeData>();
 
-            if (activeWeapons.Count == 0)
+            if (activeWeapons.Count == 0 && ExtraWeaponCapacity == 0)
             {
                 UpgradeData forceCard = upgradePool.Find(upg => upg.upgradeType == UpgradeType.ExtraWeaponCapacity);
                 if (forceCard != null)
