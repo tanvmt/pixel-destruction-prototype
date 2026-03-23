@@ -13,6 +13,12 @@ namespace PixelDestruction.Systems
 
         public int ExtraWeaponCapacity { get; private set; } = 0;
 
+        [Header("Global Settings")]
+        [SerializeField] public int baseWeaponCapacity = 1;
+
+        [Header("Upgrade Pool")]
+        [SerializeField] private List<UpgradeData> upgradePool = new List<UpgradeData>();
+
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -40,6 +46,31 @@ namespace PixelDestruction.Systems
                     weapon.ApplyUpgrade(newUpgrade.upgradeType, newUpgrade.value);
                 }
             }
+        }
+
+        public List<UpgradeData> GetRandomUpgrades(int count)
+        {
+            if (upgradePool.Count == 0) return new List<UpgradeData>();
+            
+            List<UpgradeData> copy = new List<UpgradeData>(upgradePool);
+
+            int totalSlotsOnMap = FindObjectsOfType<Gameplay.WeaponSlot>().Length;
+
+            if (baseWeaponCapacity + ExtraWeaponCapacity >= totalSlotsOnMap)
+            {
+                copy.RemoveAll(upg => upg.upgradeType == UpgradeType.ExtraWeaponCapacity);
+                Debug.Log("[UpgradeManager] Đã đạt giới hạn Weapon Slot trên bản đồ. Ẩn thẻ tăng số lượng vũ khí!");
+            }
+            
+            for (int i = 0; i < copy.Count; i++)
+            {
+                UpgradeData temp = copy[i];
+                int randomIndex = UnityEngine.Random.Range(i, copy.Count);
+                copy[i] = copy[randomIndex];
+                copy[randomIndex] = temp;
+            }
+
+            return copy.GetRange(0, Mathf.Min(count, copy.Count));
         }
 
         public void RegisterWeapon(IWeapon newWeapon)

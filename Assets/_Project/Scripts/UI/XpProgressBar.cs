@@ -16,7 +16,6 @@ namespace PixelDestruction.UI
             if (XpManager.Instance != null)
             {
                 XpManager.Instance.OnXpProgressChanged += HandleXpProgressChanged;
-                XpManager.Instance.OnUpgradeReady += HandleUpgradeReady;
             }
         }
 
@@ -25,7 +24,6 @@ namespace PixelDestruction.UI
             if (XpManager.Instance != null)
             {
                 XpManager.Instance.OnXpProgressChanged -= HandleXpProgressChanged;
-                XpManager.Instance.OnUpgradeReady -= HandleUpgradeReady;
             }
         }
 
@@ -35,11 +33,6 @@ namespace PixelDestruction.UI
             {
                 xpBar.value = progressRatio;
             }
-        }
-
-        private void HandleUpgradeReady()
-        {
-            
         }
     }
 }
