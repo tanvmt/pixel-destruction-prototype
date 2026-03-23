@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using PixelDestruction.Core;
+using System;
 
 namespace PixelDestruction.Gameplay
 {
@@ -14,6 +15,10 @@ namespace PixelDestruction.Gameplay
         [SerializeField] private Transform environmentContainer;
 
         public LevelData CurrentLevelData { get; private set; }
+        public int CurrentLevelIndex => currentLevelIndex;
+
+        public event Action<int, int> OnLevelLoaded;
+        public event Action<int, int> OnObjectProcessed;
 
         private int currentLevelIndex = 0;
         private int objectsProcessedCounter = 0;
@@ -112,6 +117,7 @@ namespace PixelDestruction.Gameplay
         public void RegisterObjectProcessed()
         {
             objectsProcessedCounter++;
+            OnObjectProcessed?.Invoke(objectsProcessedCounter, targetObjectsCount);
             CheckWinCondition();
         }
 

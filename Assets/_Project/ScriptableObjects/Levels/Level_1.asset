@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cb28461ab069141ad5cf3b4d8275f9, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
-  objectsToSpawn: []
+  maxConcurrentObjects: 2
+  texturesToSpawn:
+  - {fileID: 2800000, guid: 8baf1af87b37d4444b19f496c2c23264, type: 3}
+  - {fileID: 2800000, guid: 7ab5574144f3f1b4c96a0a859b2329d4, type: 3}
+  - {fileID: 2800000, guid: 79c65028c60c9c14f867686e248a53cd, type: 3}
+  - {fileID: 2800000, guid: 739a194f7a7dd9f428e7761a7de0f1ae, type: 3}
   spawnDelay: 2
-  requiredObjectsToDestroy: 0
+  requiredObjectsToDestroy: 10
   obstacles:
   - position: {x: -0.9, y: 0}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
