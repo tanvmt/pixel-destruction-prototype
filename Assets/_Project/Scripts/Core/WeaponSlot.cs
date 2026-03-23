@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PixelDestruction.Gameplay
+namespace PixelDestruction.Core
 {
     [RequireComponent(typeof(Collider2D))]
     public class WeaponSlot : MonoBehaviour

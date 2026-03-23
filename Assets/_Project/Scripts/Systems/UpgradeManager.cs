@@ -54,14 +54,14 @@ namespace PixelDestruction.Systems
             
             List<UpgradeData> copy = new List<UpgradeData>(upgradePool);
 
-            int totalSlotsOnMap = FindObjectsOfType<Gameplay.WeaponSlot>().Length;
+            int totalSlotsOnMap = FindObjectsOfType<WeaponSlot>().Length;
 
             if (baseWeaponCapacity + ExtraWeaponCapacity >= totalSlotsOnMap)
             {
                 copy.RemoveAll(upg => upg.upgradeType == UpgradeType.ExtraWeaponCapacity);
                 Debug.Log("[UpgradeManager] Đã đạt giới hạn Weapon Slot trên bản đồ. Ẩn thẻ tăng số lượng vũ khí!");
             }
-            
+
             for (int i = 0; i < copy.Count; i++)
             {
                 UpgradeData temp = copy[i];
