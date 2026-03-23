@@ -1,7 +1,8 @@
 using UnityEngine;
 using PixelDestruction.Core;
+using PixelDestruction.Systems;
 
-namespace PixelDestruction.Systems
+namespace PixelDestruction.Gameplay
 {
     public class WeaponPlacementManager : MonoBehaviour
     {

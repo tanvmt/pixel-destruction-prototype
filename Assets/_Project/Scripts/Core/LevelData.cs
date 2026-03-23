@@ -8,7 +8,7 @@ namespace PixelDestruction.Core
     {
         [Header("Spawn Settings")]
         [Tooltip("List of objects to drop from the top.")]
-        public List<GameObject> objectsToSpawn;
+        public List<Texture2D> texturesToSpawn;
         public float spawnDelay = 2f;
 
         [Header("Win Condition")]

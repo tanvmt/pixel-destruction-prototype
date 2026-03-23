@@ -15,6 +15,18 @@ MonoBehaviour:
   objectsToSpawn: []
   spawnDelay: 2
   requiredObjectsToDestroy: 0
-  obstacles: []
-  weaponSlots: []
-  allowedWeaponPrefab: {fileID: 0}
+  obstacles:
+  - position: {x: -0.9, y: 0}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: -0.3, y: 0}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.3, y: 0}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.9, y: 0}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  allowedWeaponPrefab: {fileID: 3941860109671443366, guid: 43a1c68e6000529408d965d109d07bd8,
+    type: 3}

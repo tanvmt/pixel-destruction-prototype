@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using PixelDestruction.Core;
 
-namespace PixelDestruction.Core
+namespace PixelDestruction.Gameplay
 {
     public class LevelManager : MonoBehaviour
     {
@@ -68,11 +69,11 @@ namespace PixelDestruction.Core
 
         private IEnumerator SpawnObjectsRoutine(LevelData data)
         {
-            foreach (var objPrefab in data.objectsToSpawn)
+            foreach (var texture in data.texturesToSpawn)
             {
-                if (objPrefab != null && spawnPoint != null)
+                if (texture != null && spawnPoint != null && PixelSpawner.Instance != null)
                 {
-                    Instantiate(objPrefab, spawnPoint.position, Quaternion.identity);
+                    PixelSpawner.Instance.SpawnObjectFromTexture(texture, spawnPoint.position);
                 }
                 yield return new WaitForSeconds(data.spawnDelay);
             }
