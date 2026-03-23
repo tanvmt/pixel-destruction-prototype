@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac10567a81d9ee4fa4dc9089bdf7558, type: 3}
   m_Name: ExtraCircularSawUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: SPEED
-  description: Circular Saw Speed Increase
+  upgradeName: CIRCULAR SAW
+  description: Circular Saw Tower
   icon: {fileID: 0}
   targetWeapon: 1
-  upgradeType: 1
-  value: 1.2
+  upgradeType: 3
+  value: 1
