@@ -34,30 +34,17 @@ namespace PixelDestruction.Gameplay
             else Destroy(gameObject);
         }
 
-        private void Start()
+        public void StartFromFirstLevel()
         {
-            GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
-            LoadLevel(0);
-        }
-
-        private void OnDestroy()
-        {
-            if (GameManager.Instance != null)
-                GameManager.Instance.OnGameStateChanged -= GameManager_OnGameStateChanged;
-        }
-
-        private void GameManager_OnGameStateChanged(GameState state)
-        {
-            if (state == GameState.Playing)
-            {
-                LoadLevel(currentLevelIndex);
-            }
+            currentLevelIndex = 0;
+            LoadLevel(currentLevelIndex);
         }
 
         public void LoadLevel(int index)
         {
             if (index < 0 || index >= levels.Count) return;
 
+            StopAllCoroutines(); 
             ClearCurrentLevel();
 
             CurrentLevelData = levels[index];
@@ -112,6 +99,18 @@ namespace PixelDestruction.Gameplay
                     Destroy(child.gameObject);
                 }
             }
+
+            PixelObject[] allPixels = FindObjectsOfType<PixelObject>();
+            foreach (var pixel in allPixels)
+            {
+                if (pixel != null) Destroy(pixel.gameObject);
+            }
+
+            PixelNode[] allNodes = FindObjectsOfType<PixelNode>();
+            foreach (var node in allNodes)
+            {
+                if (node != null) Destroy(node.gameObject);
+            }
         }
 
         public void RegisterObjectProcessed()
@@ -161,7 +160,16 @@ namespace PixelDestruction.Gameplay
         public void NextLevel()
         {
             currentLevelIndex++;
-            GameManager.Instance.UpdateGameState(GameState.Playing);
+            if (currentLevelIndex < levels.Count)
+            {
+                LoadLevel(currentLevelIndex);
+                GameManager.Instance.UpdateGameState(GameState.Playing);
+            }
+            else
+            {
+                currentLevelIndex = 0;
+                GameManager.Instance.UpdateGameState(GameState.MainMenu);
+            }
         }
     }
 }
