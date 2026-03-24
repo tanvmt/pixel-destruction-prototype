@@ -135,4 +135,3 @@ MonoBehaviour:
   damagePerSecond: 100
   damageRadius: 0.2
   rotationSpeed: -500
-  bladeTransform: {fileID: 6705562250308896913}

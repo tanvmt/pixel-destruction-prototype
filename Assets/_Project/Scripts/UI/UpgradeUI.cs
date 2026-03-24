@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using PixelDestruction.Systems;
+using PixelDestruction.Gameplay;
 
 namespace PixelDestruction.UI
 {
@@ -36,6 +37,8 @@ namespace PixelDestruction.UI
 
         private void ShowUpgradeMenu()
         {
+            if (GameManager.Instance.CurrentState == GameState.LevelComplete) return;
+
             Time.timeScale = 0f;
             if (upgradePanel != null) upgradePanel.SetActive(true);
 

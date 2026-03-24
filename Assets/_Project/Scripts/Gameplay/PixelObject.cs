@@ -19,6 +19,7 @@ namespace PixelDestruction.Gameplay
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 1f;
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            Physics2D.defaultContactOffset = 0.001f;
         }
 
         public void Initialize(PixelNode[,] initialGrid, int w, int h)
