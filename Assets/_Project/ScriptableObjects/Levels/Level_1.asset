@@ -19,9 +19,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 79c65028c60c9c14f867686e248a53cd, type: 3}
   - {fileID: 2800000, guid: 739a194f7a7dd9f428e7761a7de0f1ae, type: 3}
   spawnDelay: 2
-  requiredObjectsToDestroy: 10
+  requiredObjectsToDestroy: 3
   obstacles:
-  - position: {x: -0.9, y: 0}
+  - position: {x: -0.9, y: 1}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
   - position: {x: -0.3, y: 0}
@@ -30,7 +30,7 @@ MonoBehaviour:
   - position: {x: 0.3, y: 0}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
-  - position: {x: 0.9, y: 0}
+  - position: {x: 0.9, y: 1}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
   allowedWeaponPrefab: {fileID: 3941860109671443366, guid: 43a1c68e6000529408d965d109d07bd8,
