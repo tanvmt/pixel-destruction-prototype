@@ -1,0 +1,19 @@
+{
+    "name": "UI",
+    "rootNamespace": "PixelDestruction",
+    "references": [
+        "GUID:a8fef7693b9dc6b4d8d3350e8965367e",
+        "GUID:739938cb7cb908c469b158b91274862b",
+        "GUID:981d7fb7b07448b478990dca5dbbb44a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

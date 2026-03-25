@@ -7,8 +7,10 @@ namespace PixelDestruction.Core
     public class LevelData : ScriptableObject
     {
         [Header("Spawn Settings")]
+        [Tooltip("Maximum number of objects allowed to exist on screen at the same time. Helps prevent game lag. (0 = No limit)")]
+        public int maxConcurrentObjects = 3;
         [Tooltip("List of objects to drop from the top.")]
-        public List<GameObject> objectsToSpawn;
+        public List<Texture2D> texturesToSpawn;
         public float spawnDelay = 2f;
 
         [Header("Win Condition")]
@@ -24,6 +26,8 @@ namespace PixelDestruction.Core
 
         [Header("Layout Data")]
         public List<PositionData> obstacles;
-        public List<PositionData> weaponSlots;
+
+        [Header("Weapon Placement")]
+        public GameObject allowedWeaponPrefab;
     }
 }

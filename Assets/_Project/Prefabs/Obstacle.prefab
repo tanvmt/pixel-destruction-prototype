@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5947283906962658980}
   - component: {fileID: 3398918645180526501}
   - component: {fileID: 8614222267986655456}
-  - component: {fileID: 5752817970184831470}
+  - component: {fileID: 7626251495786669461}
   - component: {fileID: 8869692007357121497}
   m_Layer: 0
   m_Name: Obstacle
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5752817970184831470
+--- !u!114 &7626251495786669461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6020764955119251774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6791701024ee77c489d3d6d833af163b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9db229cac63d5394591fd851d699cbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
@@ -108,7 +108,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 6020764955119251774}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0926e2baf321e6d41a90948a21eea340, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

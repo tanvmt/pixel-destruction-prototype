@@ -11,6 +11,7 @@ namespace PixelDestruction.Gameplay
         private int height;
 
         private Rigidbody2D rb;
+        public int spawnId = -1;
 
         private void Awake()
         {
@@ -18,6 +19,7 @@ namespace PixelDestruction.Gameplay
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 1f;
             rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            Physics2D.defaultContactOffset = 0.001f;
         }
 
         public void Initialize(PixelNode[,] initialGrid, int w, int h)
@@ -158,6 +160,12 @@ namespace PixelDestruction.Gameplay
             
             PixelObject newPixelObj = newObj.AddComponent<PixelObject>();
 
+            newPixelObj.spawnId = this.spawnId;
+            if (this.spawnId != -1 && LevelManager.Instance != null)
+            {
+                LevelManager.Instance.RegisterFragment(this.spawnId);
+            }
+
             PixelNode[,] newGrid = new PixelNode[width, height];
             
             foreach (var node in componentNodes)
@@ -208,6 +216,14 @@ namespace PixelDestruction.Gameplay
             if (count > 0)
             {
                 rb.centerOfMass = sumLocalPos / count;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (spawnId != -1 && LevelManager.Instance != null)
+            {
+                LevelManager.Instance.UnregisterFragment(spawnId);
             }
         }
     }

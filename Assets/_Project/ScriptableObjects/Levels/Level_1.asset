@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08cb28461ab069141ad5cf3b4d8275f9, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  maxConcurrentObjects: 2
+  texturesToSpawn:
+  - {fileID: 2800000, guid: 8baf1af87b37d4444b19f496c2c23264, type: 3}
+  - {fileID: 2800000, guid: 7ab5574144f3f1b4c96a0a859b2329d4, type: 3}
+  - {fileID: 2800000, guid: 79c65028c60c9c14f867686e248a53cd, type: 3}
+  - {fileID: 2800000, guid: 739a194f7a7dd9f428e7761a7de0f1ae, type: 3}
+  spawnDelay: 2
+  requiredObjectsToDestroy: 3
+  obstacles:
+  - position: {x: -0.9, y: 1}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: -0.3, y: 0}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.3, y: 0}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.9, y: 1}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  allowedWeaponPrefab: {fileID: 3941860109671443366, guid: 43a1c68e6000529408d965d109d07bd8,
+    type: 3}

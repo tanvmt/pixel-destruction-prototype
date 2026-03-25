@@ -94,7 +94,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3941860109671443366}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0926e2baf321e6d41a90948a21eea340, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -135,4 +135,3 @@ MonoBehaviour:
   damagePerSecond: 100
   damageRadius: 0.2
   rotationSpeed: -500
-  bladeTransform: {fileID: 6705562250308896913}
