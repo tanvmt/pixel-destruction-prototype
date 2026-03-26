@@ -17,6 +17,8 @@ namespace PixelDestruction.Gameplay
         }
 
         [SerializeField] private TrailRenderer trail;
+
+        public Color OriginalColor { get; set; } = Color.white;
         
         private void Awake()
         {

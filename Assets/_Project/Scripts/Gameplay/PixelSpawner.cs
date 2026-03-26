@@ -67,6 +67,8 @@ namespace PixelDestruction.Gameplay
                     PixelNode node = nodeObj.GetComponent<PixelNode>();
                     node.GridX = x;
                     node.GridY = y;
+
+                    node.OriginalColor = pixelColor;
                     
                     grid[x, y] = node;
                 }

@@ -68,8 +68,23 @@ namespace PixelDestruction.Gameplay
                         {
                             if (!objectsHit.ContainsKey(parentObj))
                                 objectsHit[parentObj] = new List<PixelNode>();
-                                
+
                             objectsHit[parentObj].Add(node);
+                            
+                            if (PoolManager.Instance != null)
+                            {
+                                Color particleColor = node.OriginalColor;
+                                particleColor.a = 1f; 
+
+                                GameObject vfxObj = PoolManager.Instance.Spawn("SawHitVFX", node.transform.position, Quaternion.identity);
+                                
+                                ParticleSystem ps = vfxObj.GetComponent<ParticleSystem>();
+                                if (ps != null)
+                                {
+                                    var main = ps.main;
+                                    main.startColor = particleColor; 
+                                }
+                            }
                         }
                     }
                 }
