@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using PixelDestruction.Core;
 
 namespace PixelDestruction.Gameplay
 {
@@ -19,6 +20,11 @@ namespace PixelDestruction.Gameplay
                 
                 Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
                 Vector2 clickPos = new Vector2(worldPos.x, worldPos.y);
+
+                if (PoolManager.Instance != null)
+                {
+                    PoolManager.Instance.Spawn("TapFlashVFX", worldPos, Quaternion.identity);
+                }
                 
                 Collider2D[] hitColliders = Physics2D.OverlapCircleAll(clickPos, damageRadius);
                 

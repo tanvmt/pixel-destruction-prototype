@@ -63,7 +63,7 @@ namespace PixelDestruction.Gameplay
                 if (obs.prefab != null)
                 {
                     GameObject spawned = Instantiate(obs.prefab, dynamicContainer);
-                    spawned.transform.localPosition = new Vector3(obs.position.x, obs.position.y, 0f);
+                    spawned.transform.localPosition = new Vector3(obs.position.x, obs.position.y, obs.position.z);
                 }
             }
 
@@ -72,7 +72,7 @@ namespace PixelDestruction.Gameplay
                 if (wall.prefab != null)
                 {
                     GameObject spawned = Instantiate(wall.prefab, staticContainer);
-                    spawned.transform.localPosition = new Vector3(wall.position.x, wall.position.y, 0f);
+                    spawned.transform.localPosition = new Vector3(wall.position.x, wall.position.y, wall.position.z);
                 }
             }
 

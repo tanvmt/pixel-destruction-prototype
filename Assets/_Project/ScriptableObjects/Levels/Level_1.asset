@@ -48,8 +48,13 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 1}
     prefab: {fileID: 2134932415249212097, guid: 0efa63c57c97bc448a66f572b608c75d,
       type: 3}
-  - position: {x: -1.7517, y: 0.7647, z: 0}
-    scale: {x: 0.40341002, y: 10.930137, z: 1}
+  - position: {x: -0.0024, y: 0.7355, z: 0.6908151}
+    scale: {x: 0.38163, y: 11.327866, z: 3.8681076}
+    rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    prefab: {fileID: 1175417355224675825, guid: 3819603e82edcfc40b4a15ef3f2c4a61,
+      type: 3}
+  - position: {x: -1.7517, y: 0.8488, z: 0}
+    scale: {x: 0.40341002, y: 11.098575, z: 1}
     rotation: {x: 0, y: 0, z: 0, w: 1}
     prefab: {fileID: 3916263584194837793, guid: 44c7a914f7708294a9aee49dec8b39f4,
       type: 3}
