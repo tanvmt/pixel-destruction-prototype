@@ -72,5 +72,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d18d9c35d22d7749892f9bf842a4443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
+  spawnId: -1
+  activePixelCount: 0

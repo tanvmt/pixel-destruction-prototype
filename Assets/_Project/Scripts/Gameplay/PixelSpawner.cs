@@ -1,4 +1,5 @@
 using UnityEngine;
+using PixelDestruction.Core;
 
 namespace PixelDestruction.Gameplay
 {
@@ -23,12 +24,12 @@ namespace PixelDestruction.Gameplay
 
         public void SpawnObjectFromTexture(Texture2D sourceTexture, Vector3 spawnPosition)
         {
-            GameObject obj = Instantiate(pixelObjectPrefab, spawnPosition, Quaternion.identity);
+            GameObject obj = PoolManager.Instance.Spawn("PixelObject", spawnPosition, Quaternion.identity);
             PixelObject pixelObj = obj.GetComponent<PixelObject>();
             
-            if (Gameplay.LevelManager.Instance != null)
+            if (LevelManager.Instance != null)
             {
-                pixelObj.spawnId = Gameplay.LevelManager.Instance.GetNewSpawnId();
+                pixelObj.spawnId = LevelManager.Instance.GetNewSpawnId();
             }
 
             int finalWidth = sourceTexture != null ? sourceTexture.width : width;
@@ -47,12 +48,12 @@ namespace PixelDestruction.Gameplay
                     if (sourceTexture != null)
                     {
                         pixelColor = sourceTexture.GetPixel(x, y);
-                        Debug.Log("Pixel Color: " + pixelColor);
                         if (pixelColor.a < 0.1f) continue;
                     }
 
                     Vector3 localPos = new Vector3(x * spacing, y * spacing, 0);
-                    GameObject nodeObj = Instantiate(pixelNodePrefab, obj.transform);
+                    GameObject nodeObj = PoolManager.Instance.Spawn("PixelNode", obj.transform.position, Quaternion.identity);
+                    nodeObj.transform.SetParent(obj.transform);
                     nodeObj.transform.localPosition = localPos;
                     
                     MeshRenderer mr = nodeObj.GetComponent<MeshRenderer>();

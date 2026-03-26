@@ -90,7 +90,7 @@ namespace PixelDestruction.Gameplay
                         yield return null;
                     }
                 }
-
+                
                 if (texture != null && PixelSpawner.Instance != null)
                 {
                     Vector3 currentSpawnPos = CurrentLevelData.spawnPosition;
@@ -119,16 +119,9 @@ namespace PixelDestruction.Gameplay
                 }
             }
 
-            PixelObject[] allPixels = FindObjectsOfType<PixelObject>();
-            foreach (var pixel in allPixels)
+            if (PoolManager.Instance != null)
             {
-                if (pixel != null) Destroy(pixel.gameObject);
-            }
-
-            PixelNode[] allNodes = FindObjectsOfType<PixelNode>();
-            foreach (var node in allNodes)
-            {
-                if (node != null) Destroy(node.gameObject);
+                PoolManager.Instance.DespawnAll();
             }
         }
 
@@ -187,6 +180,7 @@ namespace PixelDestruction.Gameplay
             else
             {
                 currentLevelIndex = 0;
+                ClearCurrentLevel();
                 GameManager.Instance.UpdateGameState(GameState.MainMenu);
             }
         }

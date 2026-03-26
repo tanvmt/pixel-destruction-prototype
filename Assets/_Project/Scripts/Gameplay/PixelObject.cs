@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using PixelDestruction.Core;
 
 namespace PixelDestruction.Gameplay
 {
@@ -13,13 +14,12 @@ namespace PixelDestruction.Gameplay
         private Rigidbody2D rb;
         public int spawnId = -1;
 
+        [SerializeField] private int activePixelCount = 0;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            rb.bodyType = RigidbodyType2D.Dynamic;
             rb.gravityScale = 1f;
-            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-            Physics2D.defaultContactOffset = 0.001f;
         }
 
         public void Initialize(PixelNode[,] initialGrid, int w, int h)
@@ -28,7 +28,39 @@ namespace PixelDestruction.Gameplay
             width = w;
             height = h;
 
+            activePixelCount = 0;
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    if (grid[x, y] != null && !grid[x, y].IsDestroyed)
+                    {
+                        activePixelCount++;
+                    }
+                }
+            }
+
             UpdateCenterOfMass();
+        }
+
+        public void RemoveNodeFast(PixelNode node)
+        {
+            if (node != null && !node.IsDestroyed)
+            {
+                node.IsDestroyed = true;
+                
+                if (grid != null && node.GridX >= 0 && node.GridX < width && node.GridY >= 0 && node.GridY < height)
+                {
+                    grid[node.GridX, node.GridY] = null;
+                }
+                
+                activePixelCount--;
+
+                if (activePixelCount <= 0)
+                {
+                    PoolManager.Instance.Despawn(gameObject);
+                }
+            }
         }
 
         public void DestroyPixels(List<PixelNode> nodesToDestroy)
@@ -41,15 +73,16 @@ namespace PixelDestruction.Gameplay
                     node.IsDestroyed = true;
                     grid[node.GridX, node.GridY] = null;
                     anyDestroyed = true;
+                    activePixelCount--;
 
-                    node.transform.SetParent(null);
-                    
+                    node.transform.SetParent(PoolManager.Instance.transform);
+
                     Rigidbody2D nodeRb = node.gameObject.GetComponent<Rigidbody2D>();
                     if (nodeRb == null)
                     {
                         nodeRb = node.gameObject.AddComponent<Rigidbody2D>();
                     }
-                    
+
                     BoxCollider2D nodeCol = node.gameObject.GetComponent<BoxCollider2D>();
                     if (nodeCol != null)
                     {
@@ -59,6 +92,12 @@ namespace PixelDestruction.Gameplay
                     nodeRb.mass = 0.05f;
                     nodeRb.velocity = rb.velocity;
                 }
+            }
+            
+            if (activePixelCount <= 0)
+            {
+                PoolManager.Instance.Despawn(gameObject);
+                return;
             }
 
             if (anyDestroyed)
@@ -88,7 +127,7 @@ namespace PixelDestruction.Gameplay
 
             if (components.Count == 0)
             {
-                Destroy(gameObject);
+                PoolManager.Instance.Despawn(gameObject);
             }
             else if (components.Count > 1)
             {
@@ -142,6 +181,7 @@ namespace PixelDestruction.Gameplay
                 foreach (var node in newComponent)
                 {
                     grid[node.GridX, node.GridY] = null;
+                    activePixelCount--;
                 }
             }
 
@@ -150,15 +190,13 @@ namespace PixelDestruction.Gameplay
 
         private void CreateNewPixelObject(List<PixelNode> componentNodes)
         {
-            GameObject newObj = new GameObject(gameObject.name + "_Fragment");
-            newObj.transform.position = transform.position;
-            newObj.transform.rotation = transform.rotation;
+            GameObject newObj = PoolManager.Instance.Spawn("PixelObject", transform.position, transform.rotation);
             
-            Rigidbody2D newRb = newObj.AddComponent<Rigidbody2D>();
+            Rigidbody2D newRb = newObj.GetComponent<Rigidbody2D>();
             newRb.velocity = rb.velocity;
             newRb.angularVelocity = rb.angularVelocity;
             
-            PixelObject newPixelObj = newObj.AddComponent<PixelObject>();
+            PixelObject newPixelObj = newObj.GetComponent<PixelObject>();
 
             newPixelObj.spawnId = this.spawnId;
             if (this.spawnId != -1 && LevelManager.Instance != null)
@@ -179,19 +217,7 @@ namespace PixelDestruction.Gameplay
 
         public int GetRemainingPixelCount()
         {
-            if (grid == null) return 0;
-            int count = 0;
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    if (grid[x, y] != null && !grid[x, y].IsDestroyed)
-                    {
-                        count++;
-                    }
-                }
-            }
-            return count;
+            return activePixelCount;
         }
 
         public void UpdateCenterOfMass()
@@ -219,11 +245,21 @@ namespace PixelDestruction.Gameplay
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (spawnId != -1 && LevelManager.Instance != null)
             {
                 LevelManager.Instance.UnregisterFragment(spawnId);
+            }
+
+            grid = null;
+            spawnId = -1;
+            activePixelCount = 0;
+            
+            if (rb != null)
+            {
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
             }
         }
     }

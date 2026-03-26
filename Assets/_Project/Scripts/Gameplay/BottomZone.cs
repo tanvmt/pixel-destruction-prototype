@@ -1,5 +1,6 @@
 using UnityEngine;
 using PixelDestruction.Systems;
+using PixelDestruction.Core;
 
 namespace PixelDestruction.Gameplay
 {
@@ -15,31 +16,29 @@ namespace PixelDestruction.Gameplay
             GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
             PixelNode node = other.GetComponent<PixelNode>();
-            if (node != null && node.transform.parent == null)
+            
+            if (node != null) 
             {
+                PixelObject pixelObj = node.transform.parent != null ? node.GetComponentInParent<PixelObject>() : null;
+
                 if (XpManager.Instance != null)
                 {
                     XpManager.Instance.AddXp(xpPerPixel);
                 }
-                Destroy(node.gameObject);
-                return;
-            }
 
-            PixelObject pixelObj = other.GetComponentInParent<PixelObject>();
-            if (pixelObj != null)
-            {
-                int remainingPixels = pixelObj.GetRemainingPixelCount();
-                
-                if (XpManager.Instance != null)
+                if (pixelObj != null)
                 {
-                    XpManager.Instance.AddXp(remainingPixels * xpPerPixel);
+                    pixelObj.RemoveNodeFast(node); 
                 }
-                
-                Destroy(pixelObj.gameObject);
+                else
+                {
+                    node.IsDestroyed = true;
+                }
 
+                PoolManager.Instance.Despawn(node.gameObject);
             }
         }
     }
