@@ -89,6 +89,8 @@ namespace PixelDestruction.Gameplay
                         nodeCol.size *= 0.7f;
                     }
 
+                    node.ActivateTrail();
+
                     nodeRb.mass = 0.05f;
                     nodeRb.velocity = rb.velocity;
                 }

@@ -15,6 +15,13 @@ namespace PixelDestruction.Gameplay
             get => health;
             set => health = value;
         }
+
+        [SerializeField] private TrailRenderer trail;
+        
+        private void Awake()
+        {
+            if (trail != null) trail.emitting = false; 
+        }
         
         private void OnEnable()
         {
@@ -26,6 +33,30 @@ namespace PixelDestruction.Gameplay
             
             BoxCollider2D col = GetComponent<BoxCollider2D>();
             if (col != null) col.size = Vector2.one;
+
+            if (trail != null)
+            {
+                trail.emitting = false; 
+                trail.Clear();
+            }
+        }
+
+        public void ActivateTrail()
+        {
+            if (trail != null && !trail.emitting)
+            {
+                trail.Clear(); 
+                trail.emitting = true;
+            }
+        }
+        
+        private void OnDisable()
+        {
+            if (trail != null)
+            {
+                trail.emitting = false; 
+                trail.Clear();
+            }
         }
     }
 }
