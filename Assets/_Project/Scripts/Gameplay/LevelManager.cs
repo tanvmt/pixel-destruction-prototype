@@ -12,7 +12,8 @@ namespace PixelDestruction.Gameplay
 
         [SerializeField] private List<LevelData> levels;
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private Transform environmentContainer;
+        [SerializeField] private Transform staticContainer;
+        [SerializeField] private Transform dynamicContainer;
 
         public LevelData CurrentLevelData { get; private set; }
         public int CurrentLevelIndex => currentLevelIndex;
@@ -61,8 +62,17 @@ namespace PixelDestruction.Gameplay
             {
                 if (obs.prefab != null)
                 {
-                    GameObject spawned = Instantiate(obs.prefab, environmentContainer);
+                    GameObject spawned = Instantiate(obs.prefab, dynamicContainer);
                     spawned.transform.localPosition = new Vector3(obs.position.x, obs.position.y, 0f);
+                }
+            }
+
+            foreach (var wall in CurrentLevelData.walls)
+            {
+                if (wall.prefab != null)
+                {
+                    GameObject spawned = Instantiate(wall.prefab, staticContainer);
+                    spawned.transform.localPosition = new Vector3(wall.position.x, wall.position.y, 0f);
                 }
             }
 
@@ -92,9 +102,17 @@ namespace PixelDestruction.Gameplay
 
         private void ClearCurrentLevel()
         {
-            if (environmentContainer != null)
+            if (dynamicContainer != null)
             {
-                foreach (Transform child in environmentContainer)
+                foreach (Transform child in dynamicContainer)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+
+            if (staticContainer != null)
+            {
+                foreach (Transform child in staticContainer)
                 {
                     Destroy(child.gameObject);
                 }

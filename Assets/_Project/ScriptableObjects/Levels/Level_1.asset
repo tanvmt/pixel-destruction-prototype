@@ -21,17 +21,70 @@ MonoBehaviour:
   spawnDelay: 2
   requiredObjectsToDestroy: 3
   obstacles:
-  - position: {x: -0.9, y: 1}
+  - position: {x: -0.9, y: 1, z: 0}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
-  - position: {x: -0.3, y: 0}
+  - position: {x: -0.3, y: 0, z: 0}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
-  - position: {x: 0.3, y: 0}
+  - position: {x: 0.3, y: 0, z: 0}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
-  - position: {x: 0.9, y: 1}
+  - position: {x: 0.9, y: 1, z: 0}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
+  walls:
+  - position: {x: 0, y: 6.45, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    prefab: {fileID: 8141647123301180573, guid: a75c01c9faff71e4d875001b0483c7b1,
+      type: 3}
+  - position: {x: 1.7408, y: 0.7355, z: 0}
+    scale: {x: 0.38163, y: 11.327866, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 2134932415249212097, guid: 0efa63c57c97bc448a66f572b608c75d,
+      type: 3}
+  - position: {x: -1.7517, y: 0.7647, z: 0}
+    scale: {x: 0.40341002, y: 10.930137, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 3916263584194837793, guid: 44c7a914f7708294a9aee49dec8b39f4,
+      type: 3}
+  - position: {x: 1.4345, y: -1.6131, z: 0}
+    scale: {x: 0.68865, y: 0.7541, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 3355418813409726861, guid: 4a93f544e0280dd46aee205331aaeef8,
+      type: 3}
+  - position: {x: -1.3927, y: -1.6131, z: 0}
+    scale: {x: 0.60498, y: 0.7541, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 5678538602905938930, guid: 4fd75fe8cea6a614e84b8dc3ed49d2a5,
+      type: 3}
+  - position: {x: 1.5211196, y: -0.9075055, z: 0}
+    scale: {x: 0.4178746, y: 1, z: 1}
+    rotation: {x: -0, y: -0, z: -0.25881857, w: 0.965926}
+    prefab: {fileID: 1168855049395680261, guid: 3d08de8c515eac04da37658791fc7b0c,
+      type: 3}
+  - position: {x: -1.5083522, y: -0.9001125, z: -0.0000023543835}
+    scale: {x: 0.38830197, y: 1, z: 1}
+    rotation: {x: -0.2588186, y: 0.96592593, z: -0.0000007152557, w: 0.0000027567146}
+    prefab: {fileID: 2069966854606792666, guid: c181c61a401429f46ba79f20f059081f,
+      type: 3}
+  - position: {x: 0.0237, y: -3.6035, z: 0}
+    scale: {x: 3.5590756, y: 3.50691, z: 1}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    prefab: {fileID: 1417749701540563860, guid: 91cd2c2e4733be4489e0baba03576b0b,
+      type: 3}
+  - position: {x: 0.0004, y: -1.679, z: 0}
+    scale: {x: 2.2104297, y: 0.38166955, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 584733819835240701, guid: 52395380d17dd274dafd19f2f0f7f083, type: 3}
   allowedWeaponPrefab: {fileID: 3941860109671443366, guid: 43a1c68e6000529408d965d109d07bd8,
     type: 3}

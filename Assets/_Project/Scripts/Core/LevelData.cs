@@ -18,14 +18,17 @@ namespace PixelDestruction.Core
         public int requiredObjectsToDestroy;
         
         [System.Serializable]
-        public class PositionData 
+        public class ObjectData 
         {
-            public Vector2 position;
+            public Vector3 position;
+            public Vector3 scale;
+            public Quaternion rotation;
             public GameObject prefab;
         }
 
         [Header("Layout Data")]
-        public List<PositionData> obstacles;
+        public List<ObjectData> obstacles;
+        public List<ObjectData> walls;
 
         [Header("Weapon Placement")]
         public GameObject allowedWeaponPrefab;
