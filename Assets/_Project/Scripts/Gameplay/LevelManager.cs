@@ -91,9 +91,10 @@ namespace PixelDestruction.Gameplay
                     }
                 }
 
-                if (texture != null && spawnPoint != null && PixelSpawner.Instance != null)
+                if (texture != null && PixelSpawner.Instance != null)
                 {
-                    PixelSpawner.Instance.SpawnObjectFromTexture(texture, spawnPoint.position);
+                    Vector3 currentSpawnPos = CurrentLevelData.spawnPosition;
+                    PixelSpawner.Instance.SpawnObjectFromTexture(texture, currentSpawnPos);
                     objectsSpawnedCounter++;
                 }
                 yield return new WaitForSeconds(data.spawnDelay);

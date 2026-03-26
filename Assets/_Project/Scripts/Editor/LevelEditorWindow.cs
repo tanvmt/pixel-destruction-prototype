@@ -8,6 +8,7 @@ namespace PixelDestruction.Editor
     public class LevelEditorWindow : EditorWindow
     {
         private LevelData selectedLevelData;
+        private Transform spawnPointMarker;
         private Transform dynamicContainer;
         private Transform staticContainer;
 
@@ -20,6 +21,27 @@ namespace PixelDestruction.Editor
         public static void ShowWindow()
         {
             GetWindow<LevelEditorWindow>("Level Editor");
+        }
+
+        private void OnEnable()
+        {
+            if (spawnPointMarker == null)
+            {
+                GameObject spawnObj = GameObject.Find("SpawnMarker");
+                if (spawnObj != null) spawnPointMarker = spawnObj.transform;
+            }
+
+            if (dynamicContainer == null)
+            {
+                GameObject dynObj = GameObject.Find("DynamicContainer"); 
+                if (dynObj != null) dynamicContainer = dynObj.transform;
+            }
+
+            if (staticContainer == null)
+            {
+                GameObject staObj = GameObject.Find("StaticContainer");
+                if (staObj != null) staticContainer = staObj.transform;
+            }
         }
 
         private void OnGUI()
@@ -50,9 +72,10 @@ namespace PixelDestruction.Editor
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.Space();
-            
+
             // 2. CONTAINER SETUP
             EditorGUILayout.LabelField("Container Setup", EditorStyles.boldLabel);
+            spawnPointMarker = (Transform)EditorGUILayout.ObjectField("Spawn Marker:", spawnPointMarker, typeof(Transform), true);
             dynamicContainer = (Transform)EditorGUILayout.ObjectField("Dynamic Container (Obstacles):", dynamicContainer, typeof(Transform), true);
             staticContainer = (Transform)EditorGUILayout.ObjectField("Static Container (Walls/Floors):", staticContainer, typeof(Transform), true);
             EditorGUILayout.Space();
@@ -131,6 +154,10 @@ namespace PixelDestruction.Editor
             }
 
             // Scan both containers
+            if (spawnPointMarker != null)
+            {
+                selectedLevelData.spawnPosition = spawnPointMarker.position;
+            }
             selectedLevelData.obstacles = ScanContainer(dynamicContainer);
             selectedLevelData.walls = ScanContainer(staticContainer);
 

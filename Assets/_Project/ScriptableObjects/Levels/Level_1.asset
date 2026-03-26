@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cb28461ab069141ad5cf3b4d8275f9, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
+  spawnPosition: {x: 0, y: 7, z: 0}
   maxConcurrentObjects: 2
   texturesToSpawn:
   - {fileID: 2800000, guid: 8baf1af87b37d4444b19f496c2c23264, type: 3}
@@ -42,11 +43,6 @@ MonoBehaviour:
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
   walls:
-  - position: {x: 0, y: 6.45, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-    rotation: {x: -0, y: -0, z: -0, w: 1}
-    prefab: {fileID: 8141647123301180573, guid: a75c01c9faff71e4d875001b0483c7b1,
-      type: 3}
   - position: {x: 1.7408, y: 0.7355, z: 0}
     scale: {x: 0.38163, y: 11.327866, z: 1}
     rotation: {x: 0, y: 0, z: 0, w: 1}

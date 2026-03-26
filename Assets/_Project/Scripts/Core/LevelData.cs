@@ -7,6 +7,7 @@ namespace PixelDestruction.Core
     public class LevelData : ScriptableObject
     {
         [Header("Spawn Settings")]
+        public Vector3 spawnPosition = new Vector3(0, 8, 0);
         [Tooltip("Maximum number of objects allowed to exist on screen at the same time. Helps prevent game lag. (0 = No limit)")]
         public int maxConcurrentObjects = 3;
         [Tooltip("List of objects to drop from the top.")]
