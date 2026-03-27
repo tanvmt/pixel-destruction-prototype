@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08cb28461ab069141ad5cf3b4d8275f9, type: 3}
-  m_Name: Level_1
+  m_Name: Level_5
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 7, z: 0}
-  nodeHealth: 50
+  nodeHealth: 150
   maxConcurrentObjects: 3
   texturesToSpawn:
   - {fileID: 2800000, guid: 8baf1af87b37d4444b19f496c2c23264, type: 3}
@@ -26,15 +26,63 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 650c2ce2312abb043b478b76718faed5, type: 3}
   - {fileID: 2800000, guid: 9d7c25c6e2218af47b4161c55d06f503, type: 3}
   - {fileID: 2800000, guid: 064c8c64662b6bb49b733abd7ef93331, type: 3}
+  - {fileID: 2800000, guid: d1cd85c0fad28314d9eaa5caf60201bd, type: 3}
+  - {fileID: 2800000, guid: 7ab5574144f3f1b4c96a0a859b2329d4, type: 3}
+  - {fileID: 2800000, guid: 6f568593c656a76409bfea87e34fccea, type: 3}
+  - {fileID: 2800000, guid: ca29b5b543c17db4b827a565393942ff, type: 3}
+  - {fileID: 2800000, guid: 650c2ce2312abb043b478b76718faed5, type: 3}
+  - {fileID: 2800000, guid: 5c1a75784951609498f59c0e14b86c0d, type: 3}
+  - {fileID: 2800000, guid: babbee2cfec9c134aba556d7ac3026c0, type: 3}
+  - {fileID: 2800000, guid: 739a194f7a7dd9f428e7761a7de0f1ae, type: 3}
+  - {fileID: 2800000, guid: ca29b5b543c17db4b827a565393942ff, type: 3}
+  - {fileID: 2800000, guid: 343ac000d00c7864898f166c446a2e93, type: 3}
+  - {fileID: 2800000, guid: 2a9b4e4cc01d62046a397505483737ef, type: 3}
+  - {fileID: 2800000, guid: d1cd85c0fad28314d9eaa5caf60201bd, type: 3}
+  - {fileID: 2800000, guid: 79c65028c60c9c14f867686e248a53cd, type: 3}
+  - {fileID: 2800000, guid: babbee2cfec9c134aba556d7ac3026c0, type: 3}
+  - {fileID: 2800000, guid: 6f568593c656a76409bfea87e34fccea, type: 3}
+  - {fileID: 2800000, guid: 5c1a75784951609498f59c0e14b86c0d, type: 3}
+  - {fileID: 2800000, guid: babbee2cfec9c134aba556d7ac3026c0, type: 3}
+  - {fileID: 2800000, guid: e0f8dd04df5261f4ca0e8ab1847bbac9, type: 3}
+  - {fileID: 2800000, guid: d60f7e259be30f548a627744bb6eb905, type: 3}
+  - {fileID: 2800000, guid: d1cd85c0fad28314d9eaa5caf60201bd, type: 3}
+  - {fileID: 2800000, guid: 6f568593c656a76409bfea87e34fccea, type: 3}
+  - {fileID: 2800000, guid: ca29b5b543c17db4b827a565393942ff, type: 3}
+  - {fileID: 2800000, guid: 064c8c64662b6bb49b733abd7ef93331, type: 3}
   spawnDelay: 2
-  requiredObjectsToDestroy: 8
+  requiredObjectsToDestroy: 30
   obstacles:
-  - position: {x: -0.45, y: 0.5, z: 0.3}
+  - position: {x: -0.8, y: 0, z: 0.3}
     scale: {x: 0.2, y: 0.2, z: 0.2}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
       type: 3}
-  - position: {x: 0.45, y: 0.5, z: 0.3}
+  - position: {x: -0.4, y: 0.2, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: -0.4, y: 1, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0, y: 0.37, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.8, y: 0, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.4, y: 1, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.4, y: 0.2, z: 0.3}
     scale: {x: 0.2, y: 0.2, z: 0.2}
     rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using PixelDestruction.Core;
+using PixelDestruction.Systems;
 using System;
 
 namespace PixelDestruction.Gameplay
@@ -127,6 +128,9 @@ namespace PixelDestruction.Gameplay
             {
                 PoolManager.Instance.DespawnAll();
             }
+
+            UpgradeManager.Instance.ResetAllUpgrades();
+            XpManager.Instance.ResetXp();
         }
 
         public void RegisterObjectProcessed()

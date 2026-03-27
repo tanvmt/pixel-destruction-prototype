@@ -88,8 +88,9 @@ namespace PixelDestruction.Editor
             {
                 EditorGUILayout.LabelField("Gameplay & Spawner Rules", EditorStyles.boldLabel);
                 EditorGUILayout.BeginVertical("box");
-                
+
                 serializedLevelData.Update();
+                EditorGUILayout.PropertyField(serializedLevelData.FindProperty("nodeHealth"), new GUIContent("Pixel Node Health"));
                 EditorGUILayout.PropertyField(serializedLevelData.FindProperty("maxConcurrentObjects"), new GUIContent("Max Concurrent Objects"));
                 EditorGUILayout.PropertyField(serializedLevelData.FindProperty("spawnDelay"), new GUIContent("Spawn Delay (s)"));
                 EditorGUILayout.PropertyField(serializedLevelData.FindProperty("requiredObjectsToDestroy"), new GUIContent("Target Objects to Destroy"));

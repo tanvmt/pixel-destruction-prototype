@@ -26,10 +26,13 @@ namespace PixelDestruction.Gameplay
         {
             GameObject obj = PoolManager.Instance.Spawn("PixelObject", spawnPosition, Quaternion.identity);
             PixelObject pixelObj = obj.GetComponent<PixelObject>();
+
+            float currentNodeHealth = 100f;
             
-            if (LevelManager.Instance != null)
+            if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevelData != null)
             {
                 pixelObj.spawnId = LevelManager.Instance.GetNewSpawnId();
+                currentNodeHealth = LevelManager.Instance.CurrentLevelData.nodeHealth;
             }
 
             int finalWidth = sourceTexture != null ? sourceTexture.width : width;
@@ -69,6 +72,8 @@ namespace PixelDestruction.Gameplay
                     node.GridY = y;
 
                     node.OriginalColor = pixelColor;
+
+                    node.Health = currentNodeHealth;
                     
                     grid[x, y] = node;
                 }
