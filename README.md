@@ -17,7 +17,10 @@ Dự án tập trung mạnh vào việc tối ưu hóa hiệu năng (Performance
 
 ### Các bước cài đặt:
 
-1.  Bashgit clone
+1.  Clone repo
+```bash
+git clone https://github.com/tanvmt/pixel-destruction-prototype.git
+```
     
 2.  **Mở Project:** Mở Unity Hub, chọn **Add project from disk** và trỏ tới thư mục vừa clone.
     
@@ -47,7 +50,7 @@ Dự án được xây dựng theo hướng module hóa, tách biệt rõ ràng 
     
 *   **Hệ thống Phá hủy & Va chạm (Destruction Logic):** Khi vũ khí (Circular Saw) cắt qua vật thể, nó sẽ dò tìm các PixelNode lân cận, trừ máu và tách chúng ra khỏi khối mẹ. Các hạt rơi xuống tuân thủ các quy tắc vật lý được tối ưu (Triệt tiêu độ nảy, tự động tính khối lượng).
     
-*   **Hệ thống UI & Visual Effects:** Sử dụng DOTween cho các animation nảy/bung cửa sổ mượt mà. Hệ thống Trail Renderer và Particle System được thiết lập qua Layer Sorting để luôn hiển thị chính xác độ sâu.
+*   **Hệ thống UI & Visual Effects:** Sử dụng DOTween cho các animation nảy/bung cửa sổ mượt mà; Trail Renderer và Particle System để tạo hiệu ứng cho tương tác và các Pixel.
     
 
 ### 3. Hướng dẫn sử dụng Level Editor Tool
@@ -59,7 +62,7 @@ Dự án được xây dựng theo hướng module hóa, tách biệt rõ ràng 
 
 1.  Trên thanh menu của Unity, chọn Tools -> Pixel Destruction -> Level Editor. Cửa sổ Tool sẽ hiện ra.
     
-2.  **Tạo Level mới:** Nhập tên level vào ô _Create New Level_ và bấm **Create**. Một file LevelData mới sẽ được tự động tạo trong thư mục Assets.
+2.  **Tạo Level mới:** Nhập tên level vào ô _Create New Level_ và bấm **Create**. Một file LevelData mới sẽ được tự động tạo trong thư mục Assets. Nếu đã có level, chọn level ở Target Level Data và ấn **1\. Load Data to Scene** để load level vào scene.
     
 3.  **Thiết lập Gameplay:** Chỉnh sửa số lượng khối tối đa, thời gian spawn, lượng máu (Node Health) trực tiếp trên Tool.
     
@@ -67,14 +70,15 @@ Dự án được xây dựng theo hướng module hóa, tách biệt rõ ràng 
     
     *   Kéo thả các Prefab Tường/Chướng ngại vật từ Project vào các vùng chứa DynamicContainer hoặc StaticContainer trên Scene.
         
-    *   Dùng công cụ Move/Rotate/Scale của Unity để sắp xếp bố cục (Ví dụ: tạo một cái phễu tử thần).
+    *   Dùng công cụ Move/Rotate/Scale của Unity để sắp xếp bố cục.
         
 5.  **Lưu Dữ liệu:** Nhấn nút màu xanh lá **2\. Scan Scene & Save to Data**. Tool sẽ tự động quét toàn bộ tọa độ trên Scene và lưu chết vào file LevelData. Khi Play game, màn chơi sẽ được load chính xác 100%.
     
 
 > **Hình ảnh minh họa:**
 > _(Cửa sổ Level Editor Window)_
-> > <img width="349" height="553" alt="image" src="https://github.com/user-attachments/assets/ee96c558-bd79-4ef8-a2f4-34bb91ce3c72" />
+<img width="500" height="903" alt="image" src="https://github.com/user-attachments/assets/5c844cf4-a97e-4539-a43f-bb77c93c0dcf" />
+
 
 ### 4. Những điều sẽ cải thiện (Nếu có thêm thời gian)
 -----------------------------------------------------
