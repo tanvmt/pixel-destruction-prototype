@@ -177,8 +177,8 @@ namespace PixelDestruction.Editor
                 {
                     resultList.Add(new LevelData.ObjectData
                     {
-                        position = new Vector3(child.localPosition.x, child.localPosition.y, child.localPosition.z),
-                        scale = new Vector3(child.localScale.x, child.localScale.y, child.localScale.z),
+                        position = child.localPosition,
+                        scale = child.localScale,
                         rotation = child.localRotation,
                         prefab = prefabObj
                     });

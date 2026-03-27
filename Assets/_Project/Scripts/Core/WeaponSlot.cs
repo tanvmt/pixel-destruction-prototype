@@ -21,7 +21,8 @@ namespace PixelDestruction.Core
             }
 
             currentWeapon = Instantiate(weaponPrefab, transform.position, Quaternion.identity, transform);
-            currentWeapon.transform.localPosition = new Vector3(0, 0, -1);
+            currentWeapon.transform.localPosition = new Vector3(0, -1, 0);
+            currentWeapon.transform.localRotation = new Quaternion(90, 0, 0, 1);
             isOccupied = true;
             
             return true;

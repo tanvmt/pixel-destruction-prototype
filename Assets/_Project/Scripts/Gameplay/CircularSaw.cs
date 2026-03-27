@@ -43,7 +43,7 @@ namespace PixelDestruction.Gameplay
         private void Update()
         {
             Transform targetToSpin = transform;
-            targetToSpin.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
+            targetToSpin.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
 
             int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, damageRadius, hitBuffer);
             
