@@ -1,0 +1,16 @@
+{
+    "name": "Editor",
+    "rootNamespace": "PixelDestruction",
+    "references": [
+        "GUID:a8fef7693b9dc6b4d8d3350e8965367e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

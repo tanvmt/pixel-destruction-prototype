@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08cb28461ab069141ad5cf3b4d8275f9, type: 3}
+  m_Name: Level_2
+  m_EditorClassIdentifier: 
+  spawnPosition: {x: 0, y: 7, z: 0}
+  nodeHealth: 75
+  maxConcurrentObjects: 3
+  texturesToSpawn:
+  - {fileID: 2800000, guid: 8baf1af87b37d4444b19f496c2c23264, type: 3}
+  - {fileID: 2800000, guid: 7ab5574144f3f1b4c96a0a859b2329d4, type: 3}
+  - {fileID: 2800000, guid: 79c65028c60c9c14f867686e248a53cd, type: 3}
+  - {fileID: 2800000, guid: 739a194f7a7dd9f428e7761a7de0f1ae, type: 3}
+  - {fileID: 2800000, guid: d3444ae5d5b30044697506ca8fb9260c, type: 3}
+  - {fileID: 2800000, guid: 20f156e2d4e48f642a08b38df2152d56, type: 3}
+  - {fileID: 2800000, guid: babbee2cfec9c134aba556d7ac3026c0, type: 3}
+  - {fileID: 2800000, guid: 650c2ce2312abb043b478b76718faed5, type: 3}
+  - {fileID: 2800000, guid: 9d7c25c6e2218af47b4161c55d06f503, type: 3}
+  - {fileID: 2800000, guid: 064c8c64662b6bb49b733abd7ef93331, type: 3}
+  - {fileID: 2800000, guid: d1cd85c0fad28314d9eaa5caf60201bd, type: 3}
+  - {fileID: 2800000, guid: 5c1a75784951609498f59c0e14b86c0d, type: 3}
+  - {fileID: 2800000, guid: 6f568593c656a76409bfea87e34fccea, type: 3}
+  - {fileID: 2800000, guid: 7ab5574144f3f1b4c96a0a859b2329d4, type: 3}
+  - {fileID: 2800000, guid: e0f8dd04df5261f4ca0e8ab1847bbac9, type: 3}
+  - {fileID: 2800000, guid: ca29b5b543c17db4b827a565393942ff, type: 3}
+  spawnDelay: 2
+  requiredObjectsToDestroy: 14
+  obstacles:
+  - position: {x: -0.6, y: 0.2, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: -0.4, y: 1, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.6, y: 0.2, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0.4, y: 1, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  - position: {x: 0, y: 0, z: 0.3}
+    scale: {x: 0.2, y: 0.2, z: 0.2}
+    rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    prefab: {fileID: 6020764955119251774, guid: b4e5b40b5f819aa408038c740b2d1c10,
+      type: 3}
+  walls:
+  - position: {x: 3.16, y: 0.5573, z: 0}
+    scale: {x: 3.9602592, y: 11.684693, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 2134932415249212097, guid: 0efa63c57c97bc448a66f572b608c75d,
+      type: 3}
+  - position: {x: -0.0024, y: 0.7355, z: 0.6908151}
+    scale: {x: 0.38163, y: 11.327866, z: 3.8681076}
+    rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    prefab: {fileID: 1175417355224675825, guid: 3819603e82edcfc40b4a15ef3f2c4a61,
+      type: 3}
+  - position: {x: -3.26, y: 0.5592, z: 0}
+    scale: {x: 4.040595, y: 11.677919, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 3916263584194837793, guid: 44c7a914f7708294a9aee49dec8b39f4,
+      type: 3}
+  - position: {x: 1.0644, y: -1.6131, z: 0}
+    scale: {x: 0.68865, y: 0.7541, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 3355418813409726861, guid: 4a93f544e0280dd46aee205331aaeef8,
+      type: 3}
+  - position: {x: -1.0823998, y: -1.6131, z: 0}
+    scale: {x: 0.60498, y: 0.7541, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 5678538602905938930, guid: 4fd75fe8cea6a614e84b8dc3ed49d2a5,
+      type: 3}
+  - position: {x: 1.1510196, y: -0.9075055, z: 0}
+    scale: {x: 0.4178746, y: 1, z: 1}
+    rotation: {x: -0, y: -0, z: -0.25881857, w: 0.965926}
+    prefab: {fileID: 1168855049395680261, guid: 3d08de8c515eac04da37658791fc7b0c,
+      type: 3}
+  - position: {x: -1.198052, y: -0.9001125, z: -0.0000023543835}
+    scale: {x: 0.38830197, y: 1, z: 1}
+    rotation: {x: -0.2588186, y: 0.96592593, z: -0.0000007152557, w: 0.0000027567146}
+    prefab: {fileID: 2069966854606792666, guid: c181c61a401429f46ba79f20f059081f,
+      type: 3}
+  - position: {x: 0.0237, y: -3.6035, z: 0}
+    scale: {x: 3.5590756, y: 3.50691, z: 1}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
+    prefab: {fileID: 1417749701540563860, guid: 91cd2c2e4733be4489e0baba03576b0b,
+      type: 3}
+  - position: {x: 0.0004, y: -1.679, z: 0}
+    scale: {x: 2.2104297, y: 0.3816696, z: 1}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    prefab: {fileID: 584733819835240701, guid: 52395380d17dd274dafd19f2f0f7f083, type: 3}
+  allowedWeaponPrefab: {fileID: 3941860109671443366, guid: 43a1c68e6000529408d965d109d07bd8,
+    type: 3}
