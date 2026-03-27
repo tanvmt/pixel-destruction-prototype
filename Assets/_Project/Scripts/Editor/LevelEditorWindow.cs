@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
 using PixelDestruction.Core;
@@ -265,3 +267,5 @@ namespace PixelDestruction.Editor
         }
     }
 }
+
+#endif
