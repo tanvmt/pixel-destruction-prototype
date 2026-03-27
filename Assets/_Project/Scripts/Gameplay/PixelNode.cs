@@ -9,12 +9,7 @@ namespace PixelDestruction.Gameplay
         public int GridY { get; set; }
         public bool IsDestroyed { get; set; }
         
-        [SerializeField] private float health = 100f;
-        public float Health
-        {
-            get => health;
-            set => health = value;
-        }
+        public float Health { get; set; }
 
         [SerializeField] private TrailRenderer trail;
 
@@ -28,7 +23,6 @@ namespace PixelDestruction.Gameplay
         private void OnEnable()
         {
             IsDestroyed = false;
-            Health = health;
             
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (rb != null) Destroy(rb);

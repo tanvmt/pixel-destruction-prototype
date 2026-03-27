@@ -43,8 +43,15 @@ namespace PixelDestruction.Systems
         private void TriggerUpgrade()
         {
             RequiredXp = Mathf.RoundToInt(RequiredXp * xpMultiplierPerUpgrade);
-            
+
             OnUpgradeReady?.Invoke();
+        }
+        
+        public void ResetXp()
+        {
+            CurrentXp = 0;
+            RequiredXp = baseRequiredXp;
+            OnXpProgressChanged?.Invoke(0f);
         }
     }
 }
