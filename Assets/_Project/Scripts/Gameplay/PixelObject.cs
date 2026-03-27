@@ -16,6 +16,8 @@ namespace PixelDestruction.Gameplay
 
         [SerializeField] private int activePixelCount = 0;
 
+        private bool needsBfsCheck = false;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -95,7 +97,7 @@ namespace PixelDestruction.Gameplay
                     nodeRb.velocity = rb.velocity;
                 }
             }
-            
+
             if (activePixelCount <= 0)
             {
                 PoolManager.Instance.Despawn(gameObject);
@@ -104,7 +106,16 @@ namespace PixelDestruction.Gameplay
 
             if (anyDestroyed)
             {
+                needsBfsCheck = true;
+            }
+        }
+        
+        private void LateUpdate()
+        {
+            if (needsBfsCheck)
+            {
                 CheckConnectedComponents();
+                needsBfsCheck = false;
             }
         }
 

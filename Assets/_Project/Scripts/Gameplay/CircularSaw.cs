@@ -18,6 +18,8 @@ namespace PixelDestruction.Gameplay
         private float baseRotationSpeed;
         private float baseDamagePerSecond;
 
+        private Dictionary<PixelObject, List<PixelNode>> objectsHitThisFrame = new Dictionary<PixelObject, List<PixelNode>>();
+
         private void Awake()
         {
             baseRotationSpeed = rotationSpeed;
@@ -46,8 +48,11 @@ namespace PixelDestruction.Gameplay
             targetToSpin.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
 
             int hitCount = Physics2D.OverlapCircleNonAlloc(transform.position, damageRadius, hitBuffer);
+
+            objectsHitThisFrame.Clear();
             
-            Dictionary<PixelObject, List<PixelNode>> objectsHit = new Dictionary<PixelObject, List<PixelNode>>();
+            int vfxSpawnedThisFrame = 0;
+            int maxVfxPerFrame = 3;
 
             for (int i = 0; i < hitCount; i++)
             {
@@ -66,12 +71,12 @@ namespace PixelDestruction.Gameplay
                         PixelObject parentObj = node.GetComponentInParent<PixelObject>();
                         if (parentObj != null)
                         {
-                            if (!objectsHit.ContainsKey(parentObj))
-                                objectsHit[parentObj] = new List<PixelNode>();
+                            if (!objectsHitThisFrame.ContainsKey(parentObj))
+                                objectsHitThisFrame[parentObj] = new List<PixelNode>();
 
-                            objectsHit[parentObj].Add(node);
+                            objectsHitThisFrame[parentObj].Add(node);
                             
-                            if (PoolManager.Instance != null)
+                            if (vfxSpawnedThisFrame < maxVfxPerFrame && PoolManager.Instance != null)
                             {
                                 Color particleColor = node.OriginalColor;
                                 particleColor.a = 1f; 
@@ -84,13 +89,15 @@ namespace PixelDestruction.Gameplay
                                     var main = ps.main;
                                     main.startColor = particleColor; 
                                 }
+
+                                vfxSpawnedThisFrame++;
                             }
                         }
                     }
                 }
             }
 
-            foreach (var kvp in objectsHit)
+            foreach (var kvp in objectsHitThisFrame)
             {
                 if (kvp.Key != null && kvp.Value.Count > 0)
                 {
