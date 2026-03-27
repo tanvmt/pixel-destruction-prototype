@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: fredoka-one button
   m_EditorClassIdentifier: 
-  hashCode: -382023542
+  hashCode: -245902001
   material: {fileID: 7598186767883892758}
-  materialHashCode: -1051099414
+  materialHashCode: 557250063
   m_Version: 1.1.0
   m_SourceFontFileGUID: 96626777f8b9b014497bc5d753ae74a3
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 96626777f8b9b014497bc5d753ae74a3,
@@ -3565,7 +3565,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.51
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -3585,7 +3585,7 @@ Material:
     - _TextureWidth: 512
     - _UnderlayDilate: 1
     - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: -1
+    - _UnderlayOffsetY: 1
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
