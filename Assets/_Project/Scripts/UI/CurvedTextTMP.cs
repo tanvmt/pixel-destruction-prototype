@@ -48,7 +48,7 @@ namespace PixelDestruction.UI
                     vertices[vertexIndex + j] = origPos;
                 }
             }
-            
+
             for (int i = 0; i < textInfo.materialCount; i++)
             {
                 if (textInfo.meshInfo[i].mesh != null)

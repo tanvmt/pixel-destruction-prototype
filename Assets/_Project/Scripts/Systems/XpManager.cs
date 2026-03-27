@@ -36,7 +36,6 @@ namespace PixelDestruction.Systems
             }
 
             float progress = (float)CurrentXp / RequiredXp;
-            Debug.Log($"[XpManager] Progress: {progress}, CurrentXp: {CurrentXp}, RequiredXp: {RequiredXp}");
             OnXpProgressChanged?.Invoke(progress);
         }
 
